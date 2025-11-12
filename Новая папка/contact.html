@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Контакты - Ароматное Кафе</title>
+    <style>
+        /* CSS стили остаются такими же */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #5D4037;
+            background: linear-gradient(135deg, #FFF8F0 0%, #FFFAF5 100%);
+            min-height: 100vh;
+        }
+
+        header {
+            background: linear-gradient(135deg, #6D4C41 0%, #8D6E63 100%);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(109, 76, 65, 0.3);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #FFD54F;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            background-color: #FFD54F;
+            color: #5D4037;
+        }
+
+        .page-header {
+            background: linear-gradient(rgba(109, 76, 65, 0.8), rgba(141, 110, 99, 0.8)), 
+                        url('images/interior-cafe.jpg') no-repeat center center/cover;
+            height: 40vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            margin-top: 80px;
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .contact-content {
+            padding: 4rem 0;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-bottom: 4rem;
+        }
+
+        .contact-info {
+            background: white;
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: 0 10px 30px rgba(109, 76, 65, 0.1);
+        }
+
+        .contact-card {
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            border-radius: 15px;
+            background: #FFFAF5;
+            border-left: 4px solid #FFD54F;
+        }
+
+        .contact-card h3 {
+            color: #6D4C41;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .contact-card p {
+            margin-bottom: 0.5rem;
+            color: #8D6E63;
+        }
+
+        .working-hours {
+            background: white;
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: 0 10px 30px rgba(109, 76, 65, 0.1);
+        }
+
+        .hours-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .hours-table tr {
+            border-bottom: 1px solid #FFE0B2;
+        }
+
+        .hours-table tr:last-child {
+            border-bottom: none;
+        }
+
+        .hours-table td {
+            padding: 1rem 0.5rem;
+        }
+
+        .hours-table td:last-child {
+            font-weight: bold;
+            color: #6D4C41;
+        }
+
+        .map-section {
+            margin: 3rem 0;
+        }
+
+        .map-container {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(109, 76, 65, 0.2);
+            height: 400px;
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .reservation-section {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: 0 10px 30px rgba(109, 76, 65, 0.1);
+            margin: 3rem 0;
+        }
+
+        .section-title {
+            color: #6D4C41;
+            margin-bottom: 2rem;
+            font-size: 2.2rem;
+            text-align: center;
+        }
+
+        .reservation-form {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            margin-bottom: 0.5rem;
+            color: #6D4C41;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            padding: 1rem;
+            border: 2px solid #FFE0B2;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+            background: #FFFAF5;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #FFD54F;
+        }
+
+        .form-group-full {
+            grid-column: 1 / -1;
+        }
+
+        .btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #FFD54F 0%, #FFC107 100%);
+            color: #5D4037;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 213, 79, 0.3);
+            cursor: pointer;
+            font-size: 1.1rem;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 213, 79, 0.4);
+        }
+
+        .btn-full {
+            width: 100%;
+            grid-column: 1 / -1;
+            margin-top: 1rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background: #6D4C41;
+            color: white;
+            border-radius: 50%;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: #FFD54F;
+            transform: translateY(-3px);
+        }
+
+        footer {
+            background: linear-gradient(135deg, #5D4037 0%, #6D4C41 100%);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 4rem;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .page-header h1 {
+                font-size: 2.2rem;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .reservation-form {
+                grid-template-columns: 1fr;
+            }
+
+            .reservation-section {
+                padding: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">Ароматное Кафе</div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="menu.html">Меню</a></li>
+                    <li><a href="about.html">О нас</a></li>
+                    <li><a href="contact.html" style="background-color: #FFD54F; color: #5D4037;">Контакты</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="page-header">
+        <div class="container">
+            <h1>Свяжитесь с нами</h1>
+        </div>
+    </div>
+
+    <div class="contact-content">
+        <div class="container">
+            <!-- Контактная информация и время работы -->
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h2 class="section-title">Контактная информация</h2>
+                    
+                    <div class="contact-card">
+                        <h3>📍 Адрес</h3>
+                        <p>ул. Уютная, д. 15</p>
+                        <p>г. Минск, 220000</p>
+                        <p>Район: Центральный (5 минут пешком от метро)</p>
+                    </div>
+
+                    <div class="contact-card">
+                        <h3>📞 Телефоны</h3>
+                        <p>Основной: +7 (999) 123-45-67</p>
+                        <p>Резервный: +375 (29) 123-45-67</p>
+                        <p>Для бронирования: +7 (999) 765-43-21</p>
+                    </div>
+
+                    <div class="contact-card">
+                        <h3>📧 Электронная почта</h3>
+                        <p>Общие вопросы: hello@aroma-cafe.by</p>
+                        <p>Бронирование: reserve@aroma-cafe.by</p>
+                        <p>Сотрудничество: partner@aroma-cafe.by</p>
+                    </div>
+
+                    <div class="social-links">
+                        <a href="#" class="social-link" title="Instagram">📷</a>
+                        <a href="#" class="social-link" title="Telegram">✈️</a>
+                        <a href="#" class="social-link" title="VK">👥</a>
+                        <a href="#" class="social-link" title="WhatsApp">💬</a>
+                    </div>
+                </div>
+
+                <div class="working-hours">
+                    <h2 class="section-title">Время работы</h2>
+                    <table class="hours-table">
+                        <tr>
+                            <td>Понедельник - Пятница</td>
+                            <td>8:00 - 22:00</td>
+                        </tr>
+                        <tr>
+                            <td>Суббота</td>
+                            <td>9:00 - 23:00</td>
+                        </tr>
+                        <tr>
+                            <td>Воскресенье</td>
+                            <td>9:00 - 22:00</td>
+                        </tr>
+                        <tr style="background: #FFF8F0;">
+                            <td><strong>Бранч</strong></td>
+                            <td><strong>Сб-Вс: 9:00 - 13:00</strong></td>
+                        </tr>
+                    </table>
+
+                    <div style="margin-top: 2rem; padding: 1.5rem; background: #FFF3E0; border-radius: 10px;">
+                        <h3 style="color: #6D4C41; margin-bottom: 1rem;">🎉 Специальные предложения</h3>
+                        <p>🎂 <strong>День рождения:</strong> Десерт в подарок имениннику</p>
+                        <p>👨‍👩‍👧‍👦 <strong>Семейные выходные:</strong> Скидка 15% для семей от 4 человек</p>
+                        <p>☕ <strong>Утренний кофе:</strong> Скидка 20% на все виды кофе до 11:00</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Карта -->
+            <div class="map-section">
+                <h2 class="section-title">Мы на карте</h2>
+                <div class="map-container">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2351.356620278186!2d27.59184527688113!3d53.91226897423936!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46dbcf13ad9b7ed5%3A0x9c1a8d7a7d2a3a1f!2z0JzQuNC90YHQutC40Lkg0LrRg9C_0LA!5e0!3m2!1sru!2sby!4v1700000000000!5m2!1sru!2sby" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+
+            <!-- Форма бронирования -->
+            <div class="reservation-section">
+                <h2 class="section-title">Забронировать столик</h2>
+                <form class="reservation-form" id="reservationForm">
+                    <div class="form-group">
+                        <label for="name">Ваше имя *</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Телефон *</label>
+                        <input type="tel" id="phone" name="phone" required placeholder="+7 (999) 123-45-67">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="date">Дата *</label>
+                        <input type="date" id="date" name="date" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="time">Время *</label>
+                        <input type="time" id="time" name="time" required min="08:00" max="22:00">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="guests">Количество гостей *</label>
+                        <select id="guests" name="guests" required>
+                            <option value="">Выберите количество</option>
+                            <option value="1">1 человек</option>
+                            <option value="2">2 человека</option>
+                            <option value="3">3 человека</option>
+                            <option value="4">4 человека</option>
+                            <option value="5">5 человек</option>
+                            <option value="6">6 человек</option>
+                            <option value="7">7+ человек</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="occasion">Повод посещения</label>
+                        <select id="occasion" name="occasion">
+                            <option value="">Обычное посещение</option>
+                            <option value="birthday">День рождения</option>
+                            <option value="anniversary">Юбилей</option>
+                            <option value="date">Романтическая встреча</option>
+                            <option value="business">Деловая встреча</option>
+                            <option value="family">Семейный ужин</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group form-group-full">
+                        <label for="message">Дополнительные пожелания</label>
+                        <textarea id="message" name="message" rows="4" placeholder="Особые пожелания, аллергии, предпочтения по расположению столика..."></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-full">Забронировать столик</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <!-- Убрана строка "Все права защищены" -->
+        </div>
+    </footer>
+
+    <script>
+        // Подсветка активной страницы в меню
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentPage = window.location.pathname.split('/').pop();
+            const navLinks = document.querySelectorAll('.nav-links a');
+            
+            navLinks.forEach(link => {
+                if (link.getAttribute('href') === currentPage) {
+                    link.style.backgroundColor = '#FFD54F';
+                    link.style.color = '#5D4037';
+                }
+            });
+
+            // Обработка формы бронирования
+            const reservationForm = document.getElementById('reservationForm');
+            if (reservationForm) {
+                reservationForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    // Простая валидация
+                    const name = document.getElementById('name').value;
+                    const phone = document.getElementById('phone').value;
+                    const date = document.getElementById('date').value;
+                    
+                    if (name && phone && date) {
+                        alert('Спасибо, ' + name + '! Ваша заявка на бронирование принята. Мы свяжемся с вами в ближайшее время для подтверждения.');
+                        reservationForm.reset();
+                    } else {
+                        alert('Пожалуйста, заполните все обязательные поля (отмечены *).');
+                    }
+                });
+            }
+
+            // Установка минимальной даты как сегодня
+            const dateInput = document.getElementById('date');
+            if (dateInput) {
+                const today = new Date().toISOString().split('T')[0];
+                dateInput.min = today;
+            }
+        });
+    </script>
+</body>
+</html>

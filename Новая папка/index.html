@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ароматное Кафе</title>
+    <style>
+        /* Весь CSS стиль остается таким же */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #5D4037;
+            background: linear-gradient(135deg, #FFF8F0 0%, #FFFAF5 100%);
+            min-height: 100vh;
+        }
+
+        header {
+            background: linear-gradient(135deg, #6D4C41 0%, #8D6E63 100%);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(109, 76, 65, 0.3);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #FFD54F;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            background-color: #FFD54F;
+            color: #5D4037;
+        }
+
+        .hero {
+            background: linear-gradient(rgba(109, 76, 65, 0.7), rgba(141, 110, 99, 0.7)), 
+                        url('images/interior-cafe.jpg') no-repeat center center/cover;
+            height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            margin-top: 80px;
+        }
+
+        .hero-content {
+            padding: 3rem;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #FFD54F 0%, #FFC107 100%);
+            color: #5D4037;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 0.5rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 213, 79, 0.3);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 213, 79, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid #FFD54F;
+            color: #FFD54F;
+        }
+
+        section {
+            padding: 5rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #6D4C41;
+            font-size: 2.5rem;
+        }
+
+        .about {
+            background: white;
+            border-radius: 20px;
+            margin: 2rem auto;
+            box-shadow: 0 10px 30px rgba(109, 76, 65, 0.1);
+        }
+
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .about-image {
+            flex: 1;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+
+        .about-image:hover img {
+            transform: scale(1.05);
+        }
+
+        .menu {
+            background: linear-gradient(135deg, #FFF8F0 0%, #FFFAF5 100%);
+        }
+
+        .menu-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .menu-item {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(109, 76, 65, 0.1);
+            transition: all 0.3s ease;
+            border: 1px solid #FFE0B2;
+        }
+
+        .menu-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(109, 76, 65, 0.2);
+        }
+
+        .menu-item img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .menu-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .menu-item-content {
+            padding: 2rem;
+        }
+
+        .menu-item h3 {
+            color: #6D4C41;
+            margin-bottom: 0.5rem;
+            font-size: 1.4rem;
+        }
+
+        .menu-item p {
+            color: #8D6E63;
+            margin-bottom: 1rem;
+        }
+
+        .price {
+            font-weight: bold;
+            color: #FF9800;
+            font-size: 1.3rem;
+        }
+
+        .contact {
+            background: white;
+            border-radius: 20px;
+            margin: 2rem auto;
+            box-shadow: 0 10px 30px rgba(109, 76, 65, 0.1);
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 3rem;
+        }
+
+        .contact-details, .map {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .contact-details h3 {
+            color: #6D4C41;
+            margin: 1.5rem 0 0.5rem 0;
+        }
+
+        .map iframe {
+            width: 100%;
+            height: 350px;
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        footer {
+            background: linear-gradient(135deg, #5D4037 0%, #6D4C41 100%);
+            color: white;
+            text-align: center;
+            padding: 3rem 0;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .footer-section h3 {
+            color: #FFD54F;
+            margin-bottom: 1rem;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .about-content {
+                flex-direction: column;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">Ароматное Кафе</div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="menu.html">Меню</a></li>
+                    <li><a href="about.html">О нас</a></li>
+                    <li><a href="contact.html">Контакты</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Главный баннер -->
+    <section id="home" class="hero">
+        <div class="hero-content fade-in">
+            <h1>Добро пожаловать в наше кафе</h1>
+            <p>Место, где рождаются вкусные моменты и уютные встречи</p>
+            <div>
+                <a href="menu.html" class="btn">Посмотреть меню</a>
+                <a href="contact.html" class="btn btn-secondary">Забронировать столик</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- О нас -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">О нашем кафе</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Мы создали это место с любовью к кофе и вниманием к деталям. Каждая чашка кофе - это история, каждый десерт - искусство.</p>
+                    <p>Наша команда профессиональных бариста и кондитеров работает для того, чтобы сделать ваш визит незабываемым.</p>
+                    <p>Мы используем только отборные зерна арабики и свежие местные продукты для наших блюд.</p>
+                    <a href="about.html" class="btn">Узнать больше</a>
+                </div>
+                <div class="about-image">
+                    <img src="images/interior-cafe.jpg" alt="Интерьер нашего кафе">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Популярные позиции -->
+    <section id="menu-preview" class="menu">
+        <div class="container">
+            <h2 class="section-title">Популярные позиции</h2>
+            <div class="menu-items">
+                <div class="menu-item fade-in">
+                    <img src="images/latte.jpg" alt="Латте с артом">
+                    <div class="menu-item-content">
+                        <h3>Латте с артом</h3>
+                        <p>Нежный латте с воздушной пенкой и авторским рисунком</p>
+                        <div class="price">280 ₽</div>
+                    </div>
+                </div>
+                <div class="menu-item fade-in">
+                    <img src="images/newyork.jpg" alt="Чизкейк Нью-Йорк">
+                    <div class="menu-item-content">
+                        <h3>Чизкейк Нью-Йорк</h3>
+                        <p>Классический чизкейк с ягодным соусом</p>
+                        <div class="price">320 ₽</div>
+                    </div>
+                </div>
+                <div class="menu-item fade-in">
+                    <img src="images/croussan.jpg" alt="Миндальный круассан">
+                    <div class="menu-item-content">
+                        <h3>Миндальный круассан</h3>
+                        <p>Слоеный круассан с миндальной начинкой</p>
+                        <div class="price">180 ₽</div>
+                    </div>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 3rem;">
+                <a href="menu.html" class="btn">Полное меню</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Контакты -->
+    <section id="contact-preview" class="contact">
+        <div class="container">
+            <h2 class="section-title">Нас легко найти</h2>
+            <div class="contact-info">
+                <div class="contact-details">
+                    <h3>📍 Наш адрес</h3>
+                    <p>ул. Уютная, д. 15, г. Минск</p>
+                    
+                    <h3>📞 Телефон</h3>
+                    <p>+7 (999) 123-45-67</p>
+                    
+                    <h3>🕒 Время работы</h3>
+                    <p>Пн-Пт: 8:00 - 22:00</p>
+                    <p>Сб-Вс: 9:00 - 23:00</p>
+
+                    <div style="margin-top: 2rem;">
+                        <a href="contact.html" class="btn">Подробнее</a>
+                    </div>
+                </div>
+                <div class="map">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2351.356620278186!2d27.59184527688113!3d53.91226897423936!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46dbcf13ad9b7ed5%3A0x9c1a8d7a7d2a3a1f!2z0JzQuNC90YHQutC40Lkg0LrRg9C_0LA!5e0!3m2!1sru!2sby!4v1700000000000!5m2!1sru!2sby" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Подвал -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Ароматное Кафе</h3>
+                    <p>Лучший кофе и уютная атмосфера в центре города</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Быстрые ссылки</h3>
+                    <p><a href="index.html" style="color: #FFD54F;">Главная</a></p>
+                    <p><a href="menu.html" style="color: #FFD54F;">Меню</a></p>
+                    <p><a href="about.html" style="color: #FFD54F;">О нас</a></p>
+                </div>
+                <div class="footer-section">
+                    <h3>Контакты</h3>
+                    <p>📞 +7 (999) 123-45-67</p>
+                    <p>📧 hello@aroma-cafe.ru</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Плавная прокрутка к якорям
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Изменение шапки при прокрутке
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'linear-gradient(135deg, rgba(109, 76, 65, 0.95) 0%, rgba(141, 110, 99, 0.95) 100%)';
+                header.style.backdropFilter = 'blur(10px)';
+            } else {
+                header.style.background = 'linear-gradient(135deg, #6D4C41 0%, #8D6E63 100%)';
+                header.style.backdropFilter = 'none';
+            }
+        });
+
+        // Анимация появления элементов
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInUp 0.8s ease-out forwards';
+                }
+            });
+        }, observerOptions);
+
+        // Наблюдаем за элементами
+        document.querySelectorAll('.fade-in').forEach(element => {
+            element.style.opacity = '0';
+            observer.observe(element);
+        });
+
+        // Добавляем класс анимации для секций при загрузке
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelector('.hero-content').classList.add('fade-in');
+        });
+    </script>
+</body>
+</html>

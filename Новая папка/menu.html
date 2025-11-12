@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Меню - Ароматное Кафе</title>
+    <style>
+        /* CSS стили остаются такими же */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #5D4037;
+            background: linear-gradient(135deg, #FFF8F0 0%, #FFFAF5 100%);
+            min-height: 100vh;
+        }
+
+        header {
+            background: linear-gradient(135deg, #6D4C41 0%, #8D6E63 100%);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(109, 76, 65, 0.3);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #FFD54F;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            background-color: #FFD54F;
+            color: #5D4037;
+        }
+
+        .page-header {
+            background: linear-gradient(rgba(109, 76, 65, 0.8), rgba(141, 110, 99, 0.8)), 
+                        url('images/interior-cafe.jpg') no-repeat center center/cover;
+            height: 40vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            margin-top: 80px;
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .menu-categories {
+            padding: 4rem 0;
+        }
+
+        .category-title {
+            text-align: center;
+            margin: 3rem 0 2rem 0;
+            color: #6D4C41;
+            font-size: 2.2rem;
+            border-bottom: 3px solid #FFD54F;
+            padding-bottom: 1rem;
+            display: inline-block;
+        }
+
+        .category-container {
+            text-align: center;
+        }
+
+        .menu-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .menu-item {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(109, 76, 65, 0.1);
+            transition: all 0.3s ease;
+            border: 1px solid #FFE0B2;
+        }
+
+        .menu-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(109, 76, 65, 0.2);
+        }
+
+        .menu-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .menu-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .menu-item-content {
+            padding: 1.5rem;
+        }
+
+        .menu-item h3 {
+            color: #6D4C41;
+            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+        }
+
+        .menu-item p {
+            color: #8D6E63;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .price {
+            font-weight: bold;
+            color: #FF9800;
+            font-size: 1.3rem;
+        }
+
+        .allergens {
+            font-size: 0.8rem;
+            color: #A1887F;
+            margin-top: 0.5rem;
+        }
+
+        footer {
+            background: linear-gradient(135deg, #5D4037 0%, #6D4C41 100%);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 4rem;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .page-header h1 {
+                font-size: 2.2rem;
+            }
+
+            .menu-items {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">Ароматное Кафе</div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="menu.html" style="background-color: #FFD54F; color: #5D4037;">Меню</a></li>
+                    <li><a href="about.html">О нас</a></li>
+                    <li><a href="contact.html">Контакты</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="page-header">
+        <div class="container">
+            <h1>Наше Меню</h1>
+        </div>
+    </div>
+
+    <div class="menu-categories">
+        <div class="container">
+            <!-- Кофе -->
+            <div class="category-container">
+                <h2 class="category-title">☕ Кофе и Напитки</h2>
+                <div class="menu-items">
+                    <div class="menu-item">
+                        <img src="images/ecspresso.jpg" alt="Эспрессо">
+                        <div class="menu-item-content">
+                            <h3>Эспрессо</h3>
+                            <p>Классический крепкий кофе из отборных зерен арабики</p>
+                            <div class="price">180 ₽</div>
+                            <div class="allergens">Без аллергенов</div>
+                        </div>
+                    </div>
+                    <div class="menu-item">
+                        <img src="images/latte.jpg" alt="Латте">
+                        <div class="menu-item-content">
+                            <h3>Латте</h3>
+                            <p>Нежный кофе с молоком и воздушной пенкой</p>
+                            <div class="price">280 ₽</div>
+                            <div class="allergens">Содержит лактозу</div>
+                        </div>
+                    </div>
+                    <div class="menu-item">
+                        <img src="images/cappuccino.jpg" alt="Капучино">
+                        <div class="menu-item-content">
+                            <h3>Капучино</h3>
+                            <p>Идеальный баланс кофе, молока и пены</p>
+                            <div class="price">260 ₽</div>
+                            <div class="allergens">Содержит лактозу</div>
+                        </div>
+                    </div>
+                    <div class="menu-item">
+                        <img src="images/matchalatte.jpg" alt="Матча Латте">
+                        <div class="menu-item-content">
+                            <h3>Матча Латте</h3>
+                            <p>Традиционный японский зеленый чай с молоком</p>
+                            <div class="price">320 ₽</div>
+                            <div class="allergens">Содержит лактозу</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Десерты -->
+            <div class="category-container">
+                <h2 class="category-title">🍰 Десерты</h2>
+                <div class="menu-items">
+                    <div class="menu-item">
+                        <img src="images/newyork.jpg" alt="Чизкейк Нью-Йорк">
+                        <div class="menu-item-content">
+                            <h3>Чизкейк Нью-Йорк</h3>
+                            <p>Классический чизкейк с ягодным соусом</p>
+                            <div class="price">320 ₽</div>
+                            <div class="allergens">Содержит глютен, лактозу</div>
+                        </div>
+                    </div>
+                    <div class="menu-item">
+                        <img src="images/tiramisu.jpg" alt="Тирамису">
+                        <div class="menu-item-content">
+                            <h3>Тирамису</h3>
+                            <p>Итальянский десерт с кофе и сыром маскарпоне</p>
+                            <div class="price">350 ₽</div>
+                            <div class="allergens">Содержит глютен, лактозу</div>
+                        </div>
+                    </div>
+                    <div class="menu-item">
+                        <img src="images/croussan.jpg" alt="Круассан">
+                        <div class="menu-item-content">
+                            <h3>Миндальный круассан</h3>
+                            <p>Слоеный круассан с миндальной начинкой</p>
+                            <div class="price">180 ₽</div>
+                            <div class="allergens">Содержит глютен, орехи</div>
+                        </div>
+                    </div>
+                    <div class="menu-item">
+                        <img src="images/cake.jpg" alt="Шоколадный торт">
+                        <div class="menu-item-content">
+                            <h3>Шоколадный торт</h3>
+                            <p>Нежный бисквит с ганашом и свежими ягодами</p>
+                            <div class="price">290 ₽</div>
+                            <div class="allergens">Содержит глютен, лактозу</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Завтраки -->
+            <div class="category-container">
+                <h2 class="category-title">🍳 Завтраки</h2>
+                <div class="menu-items">
+                    <div class="menu-item">
+                        <img src="images/avokado.jpg" alt="Авокадо тост">
+                        <div class="menu-item-content">
+                            <h3>Тост с авокадо</h3>
+                            <p>Хлеб на закваске, спелое авокадо, руккола, семена чиа</p>
+                            <div class="price">380 ₽</div>
+                            <div class="allergens">Содержит глютен</div>
+                        </div>
+                    </div>
+                    <div class="menu-item">
+                        <img src="images/amerika.jpg" alt="Американские панкейки">
+                        <div class="menu-item-content">
+                            <h3>Американские панкейки</h3>
+                            <p>Три пышных панкейка с кленовым сиропом и ягодами</p>
+                            <div class="price">420 ₽</div>
+                            <div class="allergens">Содержит глютен, лактозу</div>
+                        </div>
+                    </div>
+                    <div class="menu-item">
+                        <img src="images/fermer.jpg" alt="Фермерский омлет">
+                        <div class="menu-item-content">
+                            <h3>Фермерский омлет</h3>
+                            <p>С овощами, зеленью и домашним сыром</p>
+                            <div class="price">350 ₽</div>
+                            <div class="allergens">Содержит лактозу, яйца</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <!-- Убрана строка "Все права защищены" -->
+        </div>
+    </footer>
+
+    <script>
+        // Подсветка активной страницы в меню
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentPage = window.location.pathname.split('/').pop();
+            const navLinks = document.querySelectorAll('.nav-links a');
+            
+            navLinks.forEach(link => {
+                if (link.getAttribute('href') === currentPage) {
+                    link.style.backgroundColor = '#FFD54F';
+                    link.style.color = '#5D4037';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

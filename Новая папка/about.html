@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>О нас - Ароматное Кафе</title>
+    <style>
+        /* CSS стили остаются такими же */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #5D4037;
+            background: linear-gradient(135deg, #FFF8F0 0%, #FFFAF5 100%);
+            min-height: 100vh;
+        }
+
+        header {
+            background: linear-gradient(135deg, #6D4C41 0%, #8D6E63 100%);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(109, 76, 65, 0.3);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #FFD54F;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            background-color: #FFD54F;
+            color: #5D4037;
+        }
+
+        .page-header {
+            background: linear-gradient(rgba(109, 76, 65, 0.8), rgba(141, 110, 99, 0.8)), 
+                        url('images/interior-cafe.jpg') no-repeat center center/cover;
+            height: 40vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            margin-top: 80px;
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .about-content {
+            padding: 4rem 0;
+        }
+
+        .story-section {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            margin: 2rem 0;
+            box-shadow: 0 10px 30px rgba(109, 76, 65, 0.1);
+        }
+
+        .section-title {
+            color: #6D4C41;
+            margin-bottom: 2rem;
+            font-size: 2.2rem;
+            text-align: center;
+        }
+
+        .story-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .value-card {
+            background: #FFFAF5;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            border: 2px solid #FFE0B2;
+            transition: transform 0.3s ease;
+        }
+
+        .value-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .value-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .value-card h3 {
+            color: #6D4C41;
+            margin-bottom: 1rem;
+        }
+
+        .team-section {
+            margin: 4rem 0;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .team-member {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(109, 76, 65, 0.1);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .team-member:hover {
+            transform: translateY(-5px);
+        }
+
+        .team-member img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .team-member:hover img {
+            transform: scale(1.05);
+        }
+
+        .member-info {
+            padding: 1.5rem;
+        }
+
+        .member-info h3 {
+            color: #6D4C41;
+            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+        }
+
+        .member-role {
+            color: #FF9800;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .member-info p {
+            color: #8D6E63;
+            line-height: 1.6;
+        }
+
+        .stats-section {
+            background: linear-gradient(135deg, #6D4C41 0%, #8D6E63 100%);
+            color: white;
+            padding: 4rem 0;
+            border-radius: 20px;
+            margin: 3rem 0;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .stat-item h3 {
+            font-size: 2.5rem;
+            color: #FFD54F;
+            margin-bottom: 0.5rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #FFD54F 0%, #FFC107 100%);
+            color: #5D4037;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 213, 79, 0.3);
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 213, 79, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid #FFD54F;
+            color: #6D4C41;
+        }
+
+        footer {
+            background: linear-gradient(135deg, #5D4037 0%, #6D4C41 100%);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 4rem;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .page-header h1 {
+                font-size: 2.2rem;
+            }
+
+            .story-section {
+                padding: 2rem;
+            }
+
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .team-member img {
+                height: 250px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">Ароматное Кафе</div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="menu.html">Меню</a></li>
+                    <li><a href="about.html" style="background-color: #FFD54F; color: #5D4037;">О нас</a></li>
+                    <li><a href="contact.html">Контакты</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="page-header">
+        <div class="container">
+            <h1>Наша История</h1>
+        </div>
+    </div>
+
+    <div class="about-content">
+        <div class="container">
+            <!-- Основная история -->
+            <div class="story-section">
+                <h2 class="section-title">Добро пожаловать в наше кафе</h2>
+                <p class="story-text">
+                    Наша история началась в 2015 году, когда два друга-бариста решили создать место, 
+                    где каждый гость почувствует себя как дома. Мы верим, что хороший кофе может 
+                    изменить день к лучшему, а уютная атмосфера — подарить вдохновение.
+                </p>
+                <p class="story-text">
+                    За 9 лет мы выросли из маленькой кофейни в любимое место встреч горожан, 
+                    но сохранили наш главный принцип: качество в каждой детали и внимание к каждому гостю.
+                </p>
+            </div>
+
+            <!-- Наши ценности -->
+            <div class="story-section">
+                <h2 class="section-title">Наши ценности</h2>
+                <div class="values-grid">
+                    <div class="value-card">
+                        <div class="value-icon">☕</div>
+                        <h3>Качество</h3>
+                        <p>Используем только отборные зерна арабики и свежие продукты</p>
+                    </div>
+                    <div class="value-card">
+                        <div class="value-icon">❤️</div>
+                        <h3>Забота</h3>
+                        <p>Создаем уютную атмосферу и помним предпочтения наших гостей</p>
+                    </div>
+                    <div class="value-card">
+                        <div class="value-icon">🌱</div>
+                        <h3>Экология</h3>
+                        <p>Используем биоразлагаемую упаковку и поддерживаем местных производителей</p>
+                    </div>
+                    <div class="value-card">
+                        <div class="value-icon">👨‍🍳</div>
+                        <h3>Традиции</h3>
+                        <p>Сохраняем классические рецепты и внедряем новые тренды</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Наша команда -->
+            <div class="team-section">
+                <h2 class="section-title">Наша команда</h2>
+                <div class="team-grid">
+                    <div class="team-member">
+                        <img src="images/alexey-team.jpg" alt="Алексей Петров - Главный бариста">
+                        <div class="member-info">
+                            <h3>Алексей Петров</h3>
+                            <div class="member-role">Главный бариста</div>
+                            <p>8 лет в кофейной индустрии. Создает авторские рецепты и обучает команду. Его латте-арт - настоящее искусство!</p>
+                        </div>
+                    </div>
+                    <div class="team-member">
+                        <img src="images/maria-team.jpg" alt="Мария Иванова - Шеф-кондитер">
+                        <div class="member-info">
+                            <h3>Мария Иванова</h3>
+                            <div class="member-role">Шеф-кондитер</div>
+                            <p>Автор всех десертов в меню. Работала в лучших кондитерских Европы. Ее чизкейки стали легендой среди гостей.</p>
+                        </div>
+                    </div>
+                    <div class="team-member">
+                        <img src="images/dima-team.jpg" alt="Дмитрий Соколов - Управляющий">
+                        <div class="member-info">
+                            <h3>Дмитрий Соколов</h3>
+                            <div class="member-role">Управляющий</div>
+                            <p>Обеспечивает безупречный сервис и следит за работой кафе. Знает по имени каждого постоянного гостя.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Статистика -->
+            <div class="stats-section">
+                <div class="container">
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <h3>9+</h3>
+                            <p>Лет на рынке</p>
+                        </div>
+                        <div class="stat-item">
+                            <h3>50,000+</h3>
+                            <p>Довольных гостей</p>
+                        </div>
+                        <div class="stat-item">
+                            <h3>15+</h3>
+                            <p>Видов кофе</p>
+                        </div>
+                        <div class="stat-item">
+                            <h3>25+</h3>
+                            <p>Авторских десертов</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Призыв к действию -->
+            <div class="story-section" style="text-align: center;">
+                <h2 class="section-title">Присоединяйтесь к нашей истории</h2>
+                <p class="story-text">
+                    Мы всегда рады новым гостям и готовы удивлять вас каждый день. 
+                    Приходите за кофе, оставайтесь за общением и вдохновением.
+                </p>
+                <a href="contact.html" class="btn">Забронировать столик</a>
+                <a href="menu.html" class="btn btn-secondary">Посмотреть меню</a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <!-- Убрана строка "Все права защищены" -->
+        </div>
+    </footer>
+
+    <script>
+        // Подсветка активной страницы в меню
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentPage = window.location.pathname.split('/').pop();
+            const navLinks = document.querySelectorAll('.nav-links a');
+            
+            navLinks.forEach(link => {
+                if (link.getAttribute('href') === currentPage) {
+                    link.style.backgroundColor = '#FFD54F';
+                    link.style.color = '#5D4037';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
